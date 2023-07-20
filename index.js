@@ -6,13 +6,17 @@ const dotenv=require('dotenv').config();
 const PORT=process.env.PORT || 4000;
 const authRouter=require('./routes/authRoute')
 const cors = require("cors");
+const cookieParser= require('cookie-parser');
+const { errorHandler, notFound } = require('./middlewares/errorHandler');
+
 dbConnect();
 app.use(cors());
-const { errorHandler, notFound } = require('./middlewares/errorHandler');
 app.use(bodyParser.json());
+
 
 app.use("/api/user", authRouter);
 
+app.use(cookieParser());
 app.use(notFound)
 app.use(errorHandler)
 app.listen(PORT, () => {
