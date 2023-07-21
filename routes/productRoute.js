@@ -4,7 +4,7 @@ const { isAdmin, authMiddleware } = require("../middlewares/authMiddleware");
 const router = express.Router();
 
 router.post("/",authMiddleware, createProduct);
-router.get('/:id',authMiddleware,getaProduct);
+router.get('/:id',getaProduct);
 router.get('/',getAllProduct);
 
 module.exports = router;
