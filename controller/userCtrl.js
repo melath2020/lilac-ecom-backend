@@ -106,7 +106,7 @@ const createUser=asyncHandler(
       const {_id}=req.user;
       validateMongoDbId(_id);
       try{
-        const cart=await Cart.find({userId:_id}).populate("productId").populate("color");
+        const cart=await Cart.find({userId:_id}).populate("productId");
         res.json(cart)
       }catch(error){
         throw new Error
