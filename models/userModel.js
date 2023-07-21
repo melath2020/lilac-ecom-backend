@@ -24,7 +24,23 @@ var userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-  
+    role:{
+        type:String,
+        default:"user",
+    },
+    cart:{
+        type:Array,
+        default:[],
+    },
+    address:{
+        type:String,
+    },
+    refreshToken: {
+        Type:String,
+
+    },
+},{
+    timestamps:true,
 });
 
 userSchema.pre('save',async function(next){
