@@ -128,18 +128,7 @@ const createUser=asyncHandler(
 
 
     
-    const emptyCart=asyncHandler(async(req,res)=>{
-      const { _id } = req.user;
-      
-      validateMongoDbId(_id);
-      try{
-        const deleteCart=await Cart.deleteMany({userId:_id})
-        res.json(deleteCart)
-      }catch(error){
-        throw new Error
-      }
-
-    })
+    
 
     const updateProductQuantityFromCart =asyncHandler(async(req,res)=>{
       const { _id } = req.user;
@@ -159,4 +148,4 @@ const createUser=asyncHandler(
 
 
 
-    module.exports={createUser,loginUserCtrl,logout,userCart,removeProductFromCart,getUserCart,emptyCart,updateProductQuantityFromCart}
+    module.exports={createUser,loginUserCtrl,logout,userCart,removeProductFromCart,getUserCart,updateProductQuantityFromCart}
